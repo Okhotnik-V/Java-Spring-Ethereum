@@ -1,8 +1,5 @@
 package com.okhotnik.demosolidity.contracts;
 
-import java.math.BigInteger;
-import java.util.Arrays;
-import java.util.Collections;
 import org.web3j.abi.TypeReference;
 import org.web3j.abi.datatypes.Function;
 import org.web3j.abi.datatypes.Type;
@@ -15,6 +12,10 @@ import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.tx.Contract;
 import org.web3j.tx.TransactionManager;
 import org.web3j.tx.gas.ContractGasProvider;
+
+import java.math.BigInteger;
+import java.util.Arrays;
+import java.util.Collections;
 
 @SuppressWarnings("rawtypes")
 public class Greeting extends Contract {
@@ -42,28 +43,6 @@ public class Greeting extends Contract {
 
     protected Greeting(String contractAddress, Web3j web3j, TransactionManager transactionManager, ContractGasProvider contractGasProvider) {
         super(BINARY, contractAddress, web3j, transactionManager, contractGasProvider);
-    }
-
-    public RemoteFunctionCall<String> getHello() {
-        final Function function = new Function(FUNC_GETHELLO,
-                Arrays.<Type>asList(),
-                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}));
-        return executeRemoteCallSingleValueReturn(function, String.class);
-    }
-
-    public RemoteFunctionCall<String> hello() {
-        final Function function = new Function(FUNC_HELLO,
-                Arrays.<Type>asList(),
-                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}));
-        return executeRemoteCallSingleValueReturn(function, String.class);
-    }
-
-    public RemoteFunctionCall<TransactionReceipt> setHello(String newHello) {
-        final Function function = new Function(
-                FUNC_SETHELLO,
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Utf8String(newHello)),
-                Collections.<TypeReference<?>>emptyList());
-        return executeRemoteCallTransaction(function);
     }
 
     @Deprecated
@@ -100,5 +79,29 @@ public class Greeting extends Contract {
     @Deprecated
     public static RemoteCall<Greeting> deploy(Web3j web3j, TransactionManager transactionManager, BigInteger gasPrice, BigInteger gasLimit) {
         return deployRemoteCall(Greeting.class, web3j, transactionManager, gasPrice, gasLimit, BINARY, "");
+    }
+
+    public RemoteFunctionCall<String> getHello() {
+        final Function function = new Function(FUNC_GETHELLO,
+                Arrays.<Type>asList(),
+                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {
+                }));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteFunctionCall<String> hello() {
+        final Function function = new Function(FUNC_HELLO,
+                Arrays.<Type>asList(),
+                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {
+                }));
+        return executeRemoteCallSingleValueReturn(function, String.class);
+    }
+
+    public RemoteFunctionCall<TransactionReceipt> setHello(String newHello) {
+        final Function function = new Function(
+                FUNC_SETHELLO,
+                Arrays.<Type>asList(new org.web3j.abi.datatypes.Utf8String(newHello)),
+                Collections.<TypeReference<?>>emptyList());
+        return executeRemoteCallTransaction(function);
     }
 }

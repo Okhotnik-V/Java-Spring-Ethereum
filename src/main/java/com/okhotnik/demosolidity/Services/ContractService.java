@@ -5,8 +5,6 @@ import org.springframework.stereotype.Service;
 import org.web3j.crypto.Credentials;
 import org.web3j.protocol.Web3j;
 import org.web3j.protocol.http.HttpService;
-import org.web3j.tx.RawTransactionManager;
-import org.web3j.tx.TransactionManager;
 
 import java.math.BigInteger;
 
@@ -18,6 +16,7 @@ public class ContractService {
     private final static BigInteger GAS_LIMIT = BigInteger.valueOf(2100000l);
     private final static BigInteger GAS_PRICE = BigInteger.valueOf(20000000000L);
     private final static String CONTRACT_ADDRESS = "0x4f0630113b9033df1a1e3ef00fa9a2790171482a";
+
 
     Web3j web3j = Web3j.build(new HttpService("http://127.0.0.1:7545"));
 
