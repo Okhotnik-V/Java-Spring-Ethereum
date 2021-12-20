@@ -18,7 +18,6 @@ public class ClientService {
 
     Web3j web3j = Web3j.build(new HttpService("http://127.0.0.1:7545"));
 
-
     public String getVersion() throws IOException {
         Web3ClientVersion web3ClientVersion = null;
         web3ClientVersion = web3j.web3ClientVersion().send();

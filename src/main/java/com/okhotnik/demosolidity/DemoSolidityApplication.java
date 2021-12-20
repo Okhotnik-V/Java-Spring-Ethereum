@@ -9,5 +9,4 @@ public class DemoSolidityApplication {
     public static void main(String[] args) {
         SpringApplication.run(DemoSolidityApplication.class, args);
     }
-
 }

@@ -17,7 +17,6 @@ public class ContractService {
     private final static BigInteger GAS_PRICE = BigInteger.valueOf(20000000000L);
     private final static String CONTRACT_ADDRESS = "0x4f0630113b9033df1a1e3ef00fa9a2790171482a";
 
-
     Web3j web3j = Web3j.build(new HttpService("http://127.0.0.1:7545"));
 
     private Credentials getCredentialsFromPrivateKey() {
